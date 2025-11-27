@@ -1,0 +1,13 @@
+{
+  "visual": {
+    "name": "DumbbellChart",
+    "displayName": "Dumbbell Chart",
+    "guid": "dumbbellChart123",
+    "visualClassName": "Visual",
+    "version": "1.0.0",
+    "description": "A D3-based Dumbbell Chart for Power BI with dynamic categories and values.",
+    "supportUrl": "",
+    "gitHubUrl": ""
+  },
+  "apiVersion": "3.0.0"
+}
