@@ -1,6 +1,6 @@
 {
   "visual": {
-    "name": "DumbbellChart",
+    "name": "DumbbellChartPBI",
     "displayName": "Dumbbell Chart",
     "guid": "dumbbellChart123",
     "visualClassName": "Visual",
