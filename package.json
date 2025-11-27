@@ -1,22 +1,17 @@
 {
   "name": "dumbbellchart",
   "version": "1.0.0",
-  "description": "A D3-based Dumbbell Chart for Power BI",
-  "main": "src/visual.ts",
   "scripts": {
-    "start": "pbiviz start",
-    "package": "pbiviz package"
+    "start": "npx pbiviz start",
+    "package": "npx pbiviz package"
   },
-  "keywords": ["powerbi", "customvisual", "d3", "dumbbellchart"],
-  "author": "Hortense Quazza",
-  "license": "MIT",
   "dependencies": {
     "d3": "^7.8.5",
     "powerbi-visuals-api": "^3.7.0"
   },
   "devDependencies": {
     "@types/d3": "^7.4.0",
-    "powerbi-visuals-tools": "^3.4.0",
+    "powerbi-visuals-tools": "^3.4.3",
     "typescript": "^5.2.2"
   }
 }
