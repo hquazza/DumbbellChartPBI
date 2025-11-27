@@ -1,13 +1,18 @@
 {
   "visual": {
-    "name": "DumbbellChartPBI",
+    "name": "DumbbellChart",
     "displayName": "Dumbbell Chart",
-    "guid": "dumbbellChart123",
-    "visualClassName": "Visual",
+    "guid": "dumbbellchart12345",
+    "apiVersion": "3.2.0",
     "version": "1.0.0",
-    "description": "A D3-based Dumbbell Chart for Power BI with dynamic categories and values.",
+    "description": "A D3 Dumbbell Chart",
     "supportUrl": "",
     "gitHubUrl": ""
   },
-  "apiVersion": "3.0.0"
+  "assets": { "icon": "assets/icon.png" },
+  "author": { "name": "Your Name", "email": "" },
+  "externalJS": [],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "stringResources": []
 }
