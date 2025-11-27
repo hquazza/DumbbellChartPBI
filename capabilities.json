@@ -1,0 +1,15 @@
+{
+  "dataRoles": [
+    { "name": "category", "kind": "Grouping", "displayName": "Category" },
+    { "name": "value1", "kind": "Measure", "displayName": "Value 1" },
+    { "name": "value2", "kind": "Measure", "displayName": "Value 2" }
+  ],
+  "dataViewMappings": [
+    {
+      "categorical": {
+        "categories": { "for": "category" },
+        "values": { "select": [{ "bind": { "to": "value1" } }, { "bind": { "to": "value2" } }] }
+      }
+    }
+  ]
+}
