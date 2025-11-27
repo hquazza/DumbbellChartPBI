@@ -2,12 +2,12 @@
   "compilerOptions": {
     "target": "ES5",
     "module": "commonjs",
+    "lib": ["es6", "dom"],
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "out",
     "strict": true,
+    "moduleResolution": "node",
     "esModuleInterop": true
   },
-  "include": [
-    "src/**/*.ts"
-  ]
+  "include": ["src"]
 }
