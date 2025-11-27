@@ -7,8 +7,6 @@ import DataView = powerbi.DataView;
 
 export class Visual implements IVisual {
     private svg: d3.Selection<SVGSVGElement, unknown, HTMLElement, any>;
-
-    // Constants
     private margin = { left: 100, right: 30, top: 60, bottom: 30 };
     private circleRadius = 14;
     private strokeWidth = 2.5;
@@ -24,18 +22,17 @@ export class Visual implements IVisual {
         const width = options.viewport.width;
         const height = options.viewport.height;
 
-        this.svg
-            .attr("width", width)
-            .attr("height", height)
-            .selectAll("*")
-            .remove(); // clear previous render
+        this.svg.attr("width", width)
+                .attr("height", height)
+                .selectAll("*").remove();
 
-        const dataView: DataView = options.dataViews[0];
-        if (!dataView || !dataView.categorical || !dataView.categorical.categories || !dataView.categorical.values || dataView.categorical.values.length < 2) {
+        const dataView = options.dataViews?.[0];
+        if (!dataView || !dataView.categorical ||
+            !dataView.categorical.categories?.[0] ||
+            !dataView.categorical.values || dataView.categorical.values.length < 2) {
             return;
         }
 
-        // Extract dynamic data
         const categories = dataView.categorical.categories[0].values;
         const value1 = dataView.categorical.values[0].values;
         const value2 = dataView.categorical.values[1].values;
@@ -46,7 +43,6 @@ export class Visual implements IVisual {
             Value2: Number(value2[i])
         }));
 
-        // Scales
         const xScale = d3.scaleLinear()
             .domain([0, d3.max(data, d => Math.max(d.Value1, d.Value2))!])
             .range([this.margin.left, width - this.margin.right]);
@@ -143,7 +139,7 @@ export class Visual implements IVisual {
             .style("font-weight", "bold")
             .text(d => d.Value2);
 
-        // Optional: Category Labels with wrap
+        // Category Labels
         this.svg.selectAll(".categoryLabels")
             .data(data)
             .enter()
@@ -154,24 +150,20 @@ export class Visual implements IVisual {
             .attr("text-anchor", "end")
             .attr("alignment-baseline", "middle")
             .text(d => d.Categories)
-            .call(this.wrap, 100); // 100px max width
+            .call(this.wrap, 100);
     }
 
-    // Text wrapping function
     private wrap(textSelection: d3.Selection<d3.BaseType, any, any, any>, width: number) {
         textSelection.each(function () {
             const text = d3.select(this);
             const words = text.text().split(/\s+/).reverse();
             let word: string | undefined;
             let line: string[] = [];
-            let lineNumber = 0;
-            const lineHeight = 1.2; // ems
+            const lineHeight = 1.2;
 
             text.text(null);
 
-            let tspan = text.append("tspan")
-                .attr("x", 0)
-                .attr("dy", "0em");
+            let tspan = text.append("tspan").attr("x", 0).attr("dy", "0em");
 
             while ((word = words.pop())) {
                 line.push(word);
